@@ -1,0 +1,19 @@
+{
+    "C": 1.0,
+    "degree": 3,
+    "coef0": 0.0,
+    "tol":  0.001,
+
+    "rf_n_estimators": 40,
+    "rf_max_depth": 1,
+    "min_samples_split":2 , 
+    "min_samples_leaf": 2 , 
+    "max_features": "log2",
+    
+
+    "min_child_weight":  1,
+    "xg_n_estimators":  40,
+    "gamma": 0,
+    "xg_max_depth": 3
+}
+
