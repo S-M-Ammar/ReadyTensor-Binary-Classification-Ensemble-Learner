@@ -1,17 +1,23 @@
-Error occurred during training. Error: Invalid parameter 'C' for estimator RandomForestClassifier(max_features='log2'). Valid parameters are: ['bootstrap', 'ccp_alpha', 'class_weight', 'criterion', 'max_depth', 'max_features', 'max_leaf_nodes', 'max_samples', 'min_impurity_decrease', 'min_samples_leaf', 'min_samples_split', 'min_weight_fraction_leaf', 'n_estimators', 'n_jobs', 'oob_score', 'random_state', 'verbose', 'warm_start'].
+Error occurred during training. Error: predict_proba is not available when  probability=False
 Traceback (most recent call last):
-  File "train.py", line 125, in run_training
-    default_hyperparameters = run_hyperparameter_tuning(X_train,Y_train)
-  File "/Users/ammar/ReadyTensor-Binary-Classification-Ensemble/src/hyperparameter_tuning/tuner.py", line 71, in run_hyperparameter_tuning
-    svc_gp = gp_minimize(objective_svc, svc_space, n_calls=100, random_state=42)
-  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/skopt/optimizer/gp.py", line 259, in gp_minimize
-    return base_minimize(
-  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/skopt/optimizer/base.py", line 299, in base_minimize
-    next_y = func(next_x)
-  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/skopt/utils.py", line 789, in wrapper
-    objective_value = func(**arg_dict)
-  File "/Users/ammar/ReadyTensor-Binary-Classification-Ensemble/src/hyperparameter_tuning/tuner.py", line 63, in objective_svc
-    rf.set_params(**params)
-  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/base.py", line 229, in set_params
-    raise ValueError(
-ValueError: Invalid parameter 'C' for estimator RandomForestClassifier(max_features='log2'). Valid parameters are: ['bootstrap', 'ccp_alpha', 'class_weight', 'criterion', 'max_depth', 'max_features', 'max_leaf_nodes', 'max_samples', 'min_impurity_decrease', 'min_samples_leaf', 'min_samples_split', 'min_weight_fraction_leaf', 'n_estimators', 'n_jobs', 'oob_score', 'random_state', 'verbose', 'warm_start'].
+  File "train.py", line 139, in run_training
+    val_accuracy = evaluate_predictor_model(
+  File "/Users/ammar/ReadyTensor-Binary-Classification-Ensemble/src/prediction/predictor_model.py", line 259, in evaluate_predictor_model
+    return model.evaluate(x_test, y_test)
+  File "/Users/ammar/ReadyTensor-Binary-Classification-Ensemble/src/prediction/predictor_model.py", line 148, in evaluate
+    return self.model.score(test_inputs, test_targets)
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/base.py", line 705, in score
+    return accuracy_score(y, self.predict(X), sample_weight=sample_weight)
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/ensemble/_voting.py", line 366, in predict
+    maj = np.argmax(self.predict_proba(X), axis=1)
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/ensemble/_voting.py", line 407, in predict_proba
+    self._collect_probas(X), axis=0, weights=self._weights_not_none
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/ensemble/_voting.py", line 382, in _collect_probas
+    return np.asarray([clf.predict_proba(X) for clf in self.estimators_])
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/ensemble/_voting.py", line 382, in <listcomp>
+    return np.asarray([clf.predict_proba(X) for clf in self.estimators_])
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/utils/_available_if.py", line 31, in __get__
+    if not self.check(obj):
+  File "/Users/ammar/Library/Python/3.8/lib/python/site-packages/sklearn/svm/_base.py", line 827, in _check_proba
+    raise AttributeError(
+AttributeError: predict_proba is not available when  probability=False

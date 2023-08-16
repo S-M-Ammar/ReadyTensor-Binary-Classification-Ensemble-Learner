@@ -93,6 +93,7 @@ class Classifier:
             degree = self.degree,
             coef0 = self.coef0, 
             tol = self.tol,
+            probability=True
         )
 
         xgboost = XGBClassifier(
