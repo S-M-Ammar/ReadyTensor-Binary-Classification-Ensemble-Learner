@@ -102,7 +102,7 @@ class Classifier:
             min_child_weight = self.min_child_weight
         )
 
-        clf = VotingClassifier(estimators = [('svc', svm),('rf', rf),('xgboost', xgboost)]) 
+        clf = VotingClassifier(estimators = [('svc', svm),('rf', rf),('xgboost', xgboost)],voting='soft') 
         return clf
 
     def fit(self, train_inputs: pd.DataFrame, train_targets: pd.Series) -> None:
