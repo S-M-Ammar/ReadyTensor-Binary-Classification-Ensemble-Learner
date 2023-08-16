@@ -13,7 +13,6 @@
 
     "min_child_weight":  1,
     "xg_n_estimators":  40,
-    "gamma": 0,
-    "xg_max_depth": 3
+    "gamma": 0
 }
 

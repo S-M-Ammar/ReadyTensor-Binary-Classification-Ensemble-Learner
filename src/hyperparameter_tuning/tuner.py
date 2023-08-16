@@ -41,9 +41,7 @@ def run_hyperparameter_tuning(train_X , train_Y):
     xgb_space  = [
               Integer(1,50, name='min_child_weight'),
               Integer(2, 120, name='xg_n_estimators'),
-              Integer(0,50, name = 'gamma'),
-              Integer(0,20, name='xg_max_depth'),
-    
+              Integer(0,50, name = 'gamma')
              ]
     
     svc = SVC()
@@ -91,7 +89,6 @@ def run_hyperparameter_tuning(train_X , train_Y):
             "min_child_weight":  xgb_gp.x[0],
             "xg_n_estimators":  xgb_gp.x[1],
             "gamma": xgb_gp.x[2],
-            "xg_max_depth": xgb_gp.x[3]
         }
     
     # Making data hyper paramters directory

@@ -45,7 +45,6 @@ class Classifier:
         min_child_weight: Optional[int] = 1,
         xg_n_estimators: Optional[int] = 40,
         gamma: Optional[int] = 0,
-        xg_max_depth:  Optional[int] = 3
         
     ):
         """Construct a new Decision Tree binary classifier.
@@ -72,7 +71,6 @@ class Classifier:
 
         self.min_child_weight = min_child_weight
         self.xg_n_estimators = xg_n_estimators
-        self.xg_max_depth = xg_max_depth
         self.gamma = gamma
 
         self.model = self.build_model()
@@ -98,7 +96,6 @@ class Classifier:
 
         xgboost = XGBClassifier(
             n_estimators = self.xg_n_estimators,
-            max_depth = self.xg_max_depth,
             gamma = self.gamma,
             min_child_weight = self.min_child_weight
         )
