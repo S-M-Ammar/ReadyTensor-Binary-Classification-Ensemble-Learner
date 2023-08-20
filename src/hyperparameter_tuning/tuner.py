@@ -22,6 +22,13 @@ HPT_RESULTS_FILE_NAME = "HPT_results.csv"
 logger = get_logger(task_name="tune")
 
 
+"""
+    The following fucntion used sickit-optimization module for hyper parameter tuning of models.
+    We need to define the start and end range of integer or float (Real) hyper-parameters. This defined space 
+    is then used in cross fold validation for each model hyper parameter tuning.
+"""
+
+
 def run_hyperparameter_tuning(train_X , train_Y):
 
     svc_space  = [

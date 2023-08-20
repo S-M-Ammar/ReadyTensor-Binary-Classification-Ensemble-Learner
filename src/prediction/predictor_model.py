@@ -18,7 +18,7 @@ PREDICTOR_FILE_NAME = "predictor.joblib"
 
 
 class Classifier:
-    """A wrapper class for the Decision Tree binary classifier.
+    """A wrapper class for the Ensemble Learner binary classifier.
 
     This class provides a consistent interface that can be used with other
     classifier models.
@@ -47,7 +47,7 @@ class Classifier:
         gamma: Optional[int] = 0,
         
     ):
-        """Construct a new Decision Tree binary classifier.
+        """Construct a new Ensemble Learner binary classifier.
 
         Args:
             min_samples_split (int, optional): The minimum number of samples required
@@ -76,7 +76,7 @@ class Classifier:
         self.model = self.build_model()
         self._is_trained = False
 
-    def build_model(self) -> RandomForestClassifier:
+    def build_model(self) -> VotingClassifier:
         """Build a new binary classifier."""
         rf = RandomForestClassifier(
             n_estimators=self.rf_n_estimators,
